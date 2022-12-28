@@ -33,7 +33,7 @@ childRouter
     } = req;
 
     const child = await ChildRecord.getOne(req.params.childId);
-    if (child === null) {
+    if (!child) {
       throw new ValidationError('Cant find child with given ID.');
     }
     const gift =
