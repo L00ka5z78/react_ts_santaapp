@@ -21,6 +21,7 @@ export const ChildrenList = () => {
     }
     return <>
         <h1>CHILDREN</h1>
-        <ChildrenTable childrenList={data.childrenList} giftsList={data.giftsList}/>
+        <ChildrenTable childrenList={data.childrenList} giftsList={data.giftsList}
+          onGiftsChange={refreshGifts}/>
     </>;
 };

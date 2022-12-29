@@ -62,4 +62,11 @@ export class ChildRecord implements ChildEntity {
       }
     );
   }
+
+  //addend 29.12.22 11:45
+  async delete(): Promise<void> {
+    await pool.execute('DELETE FROM `children` WHERE `id` = :id', {
+      id: this.id,
+    });
+  }
 }

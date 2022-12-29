@@ -24,6 +24,21 @@ childRouter
     res.json(newChild);
   })
 
+  //addend 29.12.22 11:45
+
+  .delete('/:id', async (req, res) => {
+    const gift = await ChildRecord.getOne(req.params.id);
+
+    if (!gift) {
+      throw new ValidationError('There is NO gift with given ID');
+    }
+    // if ((await gift.countGivenGifts()) > 0) {
+    //   throw new ValidationError('Cant remove given gift');
+    // }
+    await gift.delete();
+    res.end();
+  })
+
   .patch('/gift/:childId', async (req, res) => {
     // async (req: Request, res: Response): Promise<void> => {
     const {
