@@ -1,6 +1,8 @@
 import React, {MouseEvent} from 'react';
 import {Link} from "react-router-dom";
 import { GiftEntity } from 'types';
+import '../../index.css'
+
 
 interface Props {
     gift: GiftEntity;

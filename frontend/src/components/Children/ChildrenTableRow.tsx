@@ -1,6 +1,9 @@
 import React from 'react';
 import {ChildEntity, GiftEntity} from "types";
 import {ChildGiftSelect} from "../ChildGiftSelect";
+import '../../index.css'
+
+
 
 interface Props {
     child: ChildEntity;

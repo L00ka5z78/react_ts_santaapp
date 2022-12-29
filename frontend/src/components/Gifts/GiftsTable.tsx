@@ -1,6 +1,7 @@
 import React from 'react';
 import {GiftsTableRow} from "./GiftTableRow";
 import {GiftEntity} from 'types'
+// import '../../index.css'
 
 interface Props {
     gifts: GiftEntity[];

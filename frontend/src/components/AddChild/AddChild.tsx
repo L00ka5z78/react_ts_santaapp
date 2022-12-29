@@ -2,6 +2,9 @@ import React, {FormEvent, useState} from 'react';
 import {ChildEntity, CreateChildReq} from "types";
 import {Spinner} from "../common/Spinner/Spinner";
 
+import '../../index.css'
+
+
 export const AddChild = () => {
     const [form, setForm] = useState<CreateChildReq>({
         name: '',
@@ -42,6 +45,7 @@ export const AddChild = () => {
         return <Spinner/>
     }
 
+
     if (resultInfo !== null) {
         return <div>
             <p><strong>{resultInfo}</strong></p>
@@ -50,7 +54,7 @@ export const AddChild = () => {
     }
 
 
-    return <form onSubmit={sendForm}>
+    return <form  onSubmit={sendForm}>
         <h2>Add child</h2>
         <p>
             <label>
@@ -64,6 +68,6 @@ export const AddChild = () => {
         </p>
 
 
-        <button type="submit">Add</button>
+        <button className="btn" type="submit">Add</button>
     </form>
 }

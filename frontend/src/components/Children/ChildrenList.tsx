@@ -20,7 +20,7 @@ export const ChildrenList = () => {
         return <Spinner/>
     }
     return <>
-        <h1>GIFTS</h1>
+        <h1>CHILDREN</h1>
         <ChildrenTable childrenList={data.childrenList} giftsList={data.giftsList}/>
     </>;
 };

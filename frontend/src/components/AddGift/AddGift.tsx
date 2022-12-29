@@ -2,6 +2,8 @@ import React, {FormEvent, useState} from 'react';
 import {CreateGiftReq, GiftEntity} from "types";
 import {Spinner} from "../common/Spinner/Spinner";
 
+import '../../index.css'
+
 export const AddGift = () => {
     const [form, setForm] = useState<CreateGiftReq>({
         name: '',
@@ -73,6 +75,6 @@ export const AddGift = () => {
                 />
             </label>
         </p>
-        <button type="submit">Add</button>
+        <button className="btn" type="submit">Add</button>
     </form>
 }

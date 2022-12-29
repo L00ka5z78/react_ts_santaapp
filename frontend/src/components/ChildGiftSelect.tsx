@@ -1,5 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import { GiftEntity, SetGiftForChildReq } from 'types';
+import '../index.css'
 
 interface Props {
     giftsList: GiftEntity[];
