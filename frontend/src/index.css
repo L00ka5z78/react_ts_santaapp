@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Rajdhani:wght@600&display=swap');
+
+
 body {
+
+    /*background-image:url("https://www.fightersgeneration.com/nf9/game/stage/mk3-stage-temple.gif");*/
+    /*background-position: center;*/
+    font-family: 'Rajdhani', sans-serif;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -81,3 +88,39 @@ input {
     width: 75%;
     text-align: center;
 }
+
+/*table {*/
+/*    margin-top: 30px;*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*}*/
+
+/*td, th {*/
+/*    text-align: center;*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 8px;*/
+/*}*/
+
+/*thead {*/
+/*    padding-top: 12px;*/
+/*    padding-bottom: 12px;*/
+/*    text-align: left;*/
+/*    background-color: #04AA6D;*/
+/*    color: white;*/
+/*    font-size: 0.7em;*/
+/*}*/
+
+/*tr:nth-child(even) {*/
+/*    background-color: #f2f2f2;*/
+/*}*/
+
+/*tr:hover {*/
+/*    background-color: #817676;*/
+/*}*/
+
+/*select {*/
+/*    width: 49%;*/
+/*    height: 2.5em;*/
+/*    text-align: center;*/
+/*    border-color: #04AA6D;*/
+/*}*/

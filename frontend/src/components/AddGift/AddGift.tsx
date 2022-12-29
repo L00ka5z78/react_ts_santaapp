@@ -59,6 +59,7 @@ export const AddGift = () => {
                 Name: <br/>
                 <input
                     type="text"
+                    placeholder="insert gifts name..."
                     value={form.name}
                     onChange={e => updateForm('name', e.target.value)}
                 />

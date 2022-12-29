@@ -12,7 +12,8 @@ export const Header = () => {
     <div className="header">
         <h1>SANTA APP</h1>
         MENU: <NavLink style={colorOfLink} to="/gift">gift</NavLink> |
-        <NavLink style={colorOfLink} to="/child">child</NavLink>
+        <NavLink style={colorOfLink} to="/child">child</NavLink>  |
+        <NavLink style={colorOfLink} to="/">home</NavLink>
         <hr/>
     </div>
 );

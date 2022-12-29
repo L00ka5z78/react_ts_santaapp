@@ -61,6 +61,7 @@ export const AddChild = () => {
                 Name: <br/>
                 <input
                     type="text"
+                    placeholder="insert your name..."
                     value={form.name}
                     onChange={e => updateForm('name', e.target.value)}
                 />

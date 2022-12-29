@@ -31,8 +31,6 @@ childRouter
     }
   })
 
-  //addend 29.12.22 11:45
-
   .delete('/:id', async (req, res) => {
     const child = await ChildRecord.getOne(req.params.id);
 
