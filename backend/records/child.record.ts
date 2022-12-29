@@ -64,6 +64,16 @@ export class ChildRecord implements ChildEntity {
   }
 
   //addend 29.12.22 11:45
+  static async isNameTaken(name: string): Promise<boolean> {
+    const [results] = (await pool.execute(
+      'SELECT * FROM `children` WHERE `name` = :name',
+      {
+        name,
+      }
+    )) as ChildRecordResult;
+    return results.length > 0;
+  }
+
   async delete(): Promise<void> {
     await pool.execute('DELETE FROM `children` WHERE `id` = :id', {
       id: this.id,

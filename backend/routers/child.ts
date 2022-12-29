@@ -22,20 +22,27 @@ childRouter
     const newChild = new ChildRecord(req.body as CreateChildReq);
     await newChild.insert();
     res.json(newChild);
+
+    //error works in terminal, but adds child to the list. fix it
+    if (await ChildRecord.isNameTaken(req.body.name)) {
+      throw new ValidationError(
+        `Name ${req.body.name} is already taken. Choose a different one`
+      );
+    }
   })
 
   //addend 29.12.22 11:45
 
   .delete('/:id', async (req, res) => {
-    const gift = await ChildRecord.getOne(req.params.id);
+    const child = await ChildRecord.getOne(req.params.id);
 
-    if (!gift) {
-      throw new ValidationError('There is NO gift with given ID');
+    if (!child) {
+      throw new ValidationError('There is NO child with given ID');
     }
     // if ((await gift.countGivenGifts()) > 0) {
     //   throw new ValidationError('Cant remove given gift');
     // }
-    await gift.delete();
+    await child.delete();
     res.end();
   })
 
