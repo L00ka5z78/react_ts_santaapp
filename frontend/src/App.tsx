@@ -7,6 +7,7 @@ import {Header} from "./components/Header/Header";
 import {NotFoundView} from "./views/NotFoundView";
 import {SingleGiftView} from "./views/SingleGiftView";
 import {HomePageView} from "./views/HomePageView";
+import {Footer} from "./components/Footer/Footer";
 
 export const App = () => {
     return (
@@ -19,6 +20,7 @@ export const App = () => {
                 <Route path="/child" element={<ChildView/>}/>
                 <Route path="/*" element={<NotFoundView/>}/>
             </Routes>
+            <Footer/>
         </>
     );
 }

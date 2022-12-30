@@ -1,7 +1,7 @@
 .header {
     background-color: #c2c0ae;
     height: 120px;
- display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -13,15 +13,17 @@ h1 {
 }
 
 img {
-    width: 80px;
+    width: 100px;
     border-radius: 50%;
 }
+
 .links {
     padding: 10px 0px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 /*.link {*/
 /*    text-decoration: none;*/
 /*    color: inherit;*/
