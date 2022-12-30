@@ -1,4 +1,6 @@
 .header {
+    background-color: #c2c0ae;
+    height: 120px;
  display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,4 +10,24 @@
 
 h1 {
     display: flex;
+}
+
+img {
+    width: 80px;
+    border-radius: 50%;
+}
+.links {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/*.link {*/
+/*    text-decoration: none;*/
+/*    color: inherit;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+h4 {
+    font-weight: 300;
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+
+import Logo from '../../utils/img/smiley.png'
 import './Header.css'
 
 export const Header = () => {
@@ -9,12 +11,21 @@ export const Header = () => {
     }) => ({color: isActive ? 'green' : 'red'})
 
     return (
-    <div className="header">
-        <h1>SANTA APP</h1>
-        MENU: <NavLink style={colorOfLink} to="/gift">gift</NavLink> |
-        <NavLink style={colorOfLink} to="/child">child</NavLink>  |
-        <NavLink style={colorOfLink} to="/">home</NavLink>
-        <hr/>
-    </div>
-);
+
+        <div className="header">
+            <img src={Logo} alt="smiley :)"/>
+            <h1>SANTA APP</h1>
+            <div className="links">
+                <h2>MENU</h2>
+
+                <NavLink className="link" style={colorOfLink} to="/gift"><h4>Gift</h4></NavLink>
+                <NavLink className="link" style={colorOfLink} to="/child"><h4>Child</h4></NavLink>
+                <NavLink className="link" style={colorOfLink} to="/"><h4>Home</h4></NavLink>
+                <button>Log in</button>
+            </div>
+
+
+
+        </div>
+    );
 };
