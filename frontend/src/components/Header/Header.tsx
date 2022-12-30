@@ -13,7 +13,7 @@ export const Header = () => {
     return (
 
         <div className="header">
-            <img src={Logo} alt="smiley :)"/>
+            <img className="header_img" src={Logo} alt="smiley :)"/>
             <h1>SANTA APP</h1>
             <div className="links">
                 <h2>MENU</h2>

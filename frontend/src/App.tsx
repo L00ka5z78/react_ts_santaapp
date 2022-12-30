@@ -6,7 +6,7 @@ import {ChildView} from "./views/ChildView";
 import {Header} from "./components/Header/Header";
 import {NotFoundView} from "./views/NotFoundView";
 import {SingleGiftView} from "./views/SingleGiftView";
-import {HomePageView} from "./views/HomePageView";
+import {HomePageView} from "./views/pages/HomePageView";
 import {Footer} from "./components/Footer/Footer";
 
 export const App = () => {
