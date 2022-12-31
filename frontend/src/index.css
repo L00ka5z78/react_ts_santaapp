@@ -31,18 +31,15 @@ h2 {
     padding: 15px;
 }
 
-form {
-    /*border: 2px solid #ddd;*/
-    /*border-radius: 0.5em;*/
-    /*width: 75%;*/
+.form {
+    border: 2px solid #ddd;
+    border-radius: 0.5em;
+    width: 50%;
     text-align: center;
     padding: 10px;
     margin: 10px auto 0;
 }
 
-p {
-    width: 75%;
-}
 
 /*label {*/
 /*    display: flex;*/

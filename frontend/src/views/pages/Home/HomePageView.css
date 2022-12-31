@@ -1,7 +1,14 @@
-/*Home*/
+.home {
+    /*bccolor covers tricky img effect*/
+    /*background-color: darkslategrey;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+}
 
 .link {
-
     text-decoration: none;
     color: inherit;
     justify-content: space-between;
@@ -15,9 +22,6 @@ p {
     font-size: 15px;
 }
 
-.home {
-
-}
 
 .posts {
     margin-top: 50px;
@@ -31,6 +35,7 @@ p {
     gap: 100px;
 }
 
+/*every second post is placed on the other side than previous one*/
 .post:nth-child(2n + 1) {
     flex-direction: row-reverse;
 }
@@ -49,8 +54,8 @@ p {
     background-color: cadetblue;
     /*image positioning trick*/
     position: absolute;
-    top: 20px;
-    left: -20px;
+    top: 10px;
+    left: -10px;
     z-index: -1;
 }
 
@@ -76,8 +81,10 @@ button {
     border-radius: 3px;
     color: cadetblue;
 }
+
 button:hover {
     border: 1px solid white;
     background-color: #282c34;
     color: black;
 }
+

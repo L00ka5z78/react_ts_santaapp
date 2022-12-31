@@ -54,7 +54,7 @@ export const AddChild = () => {
     }
 
 
-    return <form  onSubmit={sendForm}>
+    return <form className="form" onSubmit={sendForm}>
         <h2>Add child</h2>
         <p>
             <label>
