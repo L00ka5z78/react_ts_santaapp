@@ -20,7 +20,7 @@ export const SingleGiftView = () => {
     }
     return <>
         <h1>{giftInfo.gift.name}</h1>
-        <div className="singleItem">Gift's ID is: <strong>{giftInfo.gift.id}</strong>. There is <strong>{giftInfo.gift.count}</strong> pieces of
+        <div>Gift's ID is: <strong>{giftInfo.gift.id}</strong>. There is <strong>{giftInfo.gift.count}</strong> pieces of
             this item and <strong>{giftInfo.givenCount} already given.</strong></div>
         <div>
             <Link to="/gift">Go back to list page</Link>

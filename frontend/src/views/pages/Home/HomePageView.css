@@ -75,7 +75,6 @@ img {
 button {
     /*width: max-content;*/
     padding: 5px 10px;
-    border: 1px solid grey;
     cursor: pointer;
     background-color: white;
     border-radius: 3px;
@@ -83,7 +82,6 @@ button {
 }
 
 button:hover {
-    border: 1px solid white;
     background-color: #282c34;
     color: black;
 }
