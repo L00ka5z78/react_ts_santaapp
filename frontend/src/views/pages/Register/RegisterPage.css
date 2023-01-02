@@ -1,0 +1,29 @@
+
+.auth {
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    flex-direction: column;
+
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto 0;
+}
+
+
+.register_form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background-color: white;
+    gap: 20px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+

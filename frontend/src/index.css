@@ -97,3 +97,29 @@ select {
     padding: 10px;
 
 }
+.single_gift {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: red;
+    padding: 10px;
+    background-color: #b09599;
+    justify-content: center;
+    height: 60vh;
+
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    /*width: 50%;*/
+    text-align: center;
+    margin: 10px auto 0;
+
+    width: 55%;
+}
+form {
+    border: 2px solid #ddd;
+    border-radius: 0.5em;
+    width: 75%;
+
+    padding: 10px;
+    margin: 10px auto 0;
+}

@@ -1,13 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import './RegisterPage.css'
+
 
 
 export const RegisterPage = () => {
     return (
-        <div >
+        <div className="auth" >
             <h1 className="h1">Register</h1>
-            <form className="login_form" action="src/views/pages/Login/LoginPage">
+            <form className="register_form" action="src/views/pages/Login/LoginPage">
                 <input required className="input_form" type="text" placeholder="username"/>
                 <input required className="input_form" type="email" placeholder="email"/>
                 <input required className="input_form" type="password" placeholder="password"/>
