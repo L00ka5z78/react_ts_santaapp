@@ -14,6 +14,7 @@ export const ChildrenTable = (props: Props) => (
         <tr>
             <th>Name</th>
             <th>Gift</th>
+            <th>Description</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -24,7 +25,9 @@ export const ChildrenTable = (props: Props) => (
              key={child.id}
              child={child}
              giftsList={props.giftsList}
-              onGiftsChange={props.onGiftsChange}/>
+              onGiftsChange={props.onGiftsChange}
+
+             />
             ))
         }
         </tbody>

@@ -25,11 +25,11 @@ childRouter
 
     //error works in terminal, but adds child to the list. fix it
     //30.12 added name as unique key. didnt add duplicated name, shows undefined added to santas list
-    if (await ChildRecord.isNameTaken(req.body.name)) {
-      throw new ValidationError(
-        `Name ${req.body.name} is already taken. Choose a different one`
-      );
-    }
+    // if (await ChildRecord.isNameTaken(req.body.name)) {
+    //   throw new ValidationError(
+    //     `Name ${req.body.name} is already taken. Choose a different one`
+    //   );
+    // }
   })
 
   .delete('/:id', async (req, res) => {

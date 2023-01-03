@@ -34,14 +34,21 @@ export const ChildrenTableRow = (props: Props) => {
             <th>{props.child.name}</th>
             <td>
                 <ChildGiftSelect
-                giftsList={props.giftsList}
-                selectedId={props.child.giftId}
-                childId={props.child.id as string}
-                />
+                    giftsList={props.giftsList}
+                    selectedId={props.child.giftId}
+                    childId={props.child.id as string}
+                /></td>
+
+            <td>
+                {props.child.desc}
             </td>
+
             <td>
                 <a href="#" onClick={deleteChild}>🗑</a>
             </td>
+
+
+            {/*<td>{props.child.desc}</td>*/}
         </tr>
     );
 };

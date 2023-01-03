@@ -10,6 +10,7 @@ export class ChildRecord implements ChildEntity {
   public id?: string;
   public name: string;
   public giftId: string;
+  public desc: string;
 
   constructor(obj: ChildEntity) {
     if (!obj.name || obj.name.length < 3 || obj.name.length > 25) {
@@ -19,6 +20,7 @@ export class ChildRecord implements ChildEntity {
     this.id = obj.id;
     this.name = obj.name;
     this.giftId = obj.giftId;
+    this.desc = obj.desc;
   }
 
   async insert(): Promise<string> {
@@ -26,10 +28,11 @@ export class ChildRecord implements ChildEntity {
       this.id = uuid();
     }
     await pool.execute(
-      'INSERT INTO `children` (`id`, `name`) VALUES(:id, :name)',
+      'INSERT INTO `children` (`id`, `name`, `desc`) VALUES(:id, :name, :desc)',
       {
         id: this.id,
         name: this.name,
+        desc: this.desc,
       }
     );
     return this.id;
@@ -54,11 +57,12 @@ export class ChildRecord implements ChildEntity {
 
   async update(): Promise<void> {
     await pool.execute(
-      'UPDATE `children` SET `name` = :name, `giftId` = :giftId WHERE `id` = :id',
+      'UPDATE `children` SET `name` = :name, `giftId` = :giftId, `desc` = :desc WHERE `id` = :id',
       {
         id: this.id,
         name: this.name,
         giftId: this.giftId,
+        desc: this.desc,
       }
     );
   }

@@ -9,6 +9,7 @@ export const AddChild = () => {
     const [form, setForm] = useState<CreateChildReq>({
         name: '',
         giftId: '',
+        desc: '',
     });
 
     const [loading, setLoading] = useState<boolean>(false)
@@ -66,9 +67,19 @@ export const AddChild = () => {
                     onChange={e => updateForm('name', e.target.value)}
                 />
             </label>
+
+
         </p>
-
-
+        <p>
+            <label>
+                Description: <br/>
+                <textarea
+                    placeholder="write something about yourself..."
+                    value={form.desc}
+                    onChange={e => updateForm('desc', e.target.value)}
+                />
+            </label>
+        </p>
         <button className="btn" type="submit">Add</button>
     </form>
 }
