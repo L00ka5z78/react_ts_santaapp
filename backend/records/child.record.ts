@@ -67,7 +67,6 @@ export class ChildRecord implements ChildEntity {
     );
   }
 
-  //addend 29.12.22 11:45
   static async isNameTaken(name: string): Promise<boolean> {
     const [results] = (await pool.execute(
       'SELECT * FROM `children` WHERE `name` = :name',

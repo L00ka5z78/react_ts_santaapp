@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { pool } from '../utils/db';
+import { pool } from '../utils/db.js';
 import * as bcrypt from 'bcryptjs';
 
 export const register = (req: Request, res: Response) => {
@@ -10,7 +10,7 @@ export const register = (req: Request, res: Response) => {
 
   pool.query(
     userData,
-    arr,
+    // arr,
     // [req.body.email, req.body.username],
     (err: string, data: string) => {
       if (err) return res.json(err);
@@ -19,6 +19,12 @@ export const register = (req: Request, res: Response) => {
       // hash the password and create user
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(req.body.password, salt);
+
+      const userData =
+        'INSERT INTO `users` (`username`, `email`, `password`) VALUES (?)';
+      const value = [req.body.username, req.body.email, hash];
+
+      pool.query(userData, value, (err: string, data: string) => {});
     }
   );
 };

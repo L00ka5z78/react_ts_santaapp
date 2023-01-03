@@ -10,6 +10,7 @@ export class GiftRecord implements GiftEntity {
   id?: string;
   name: string;
   count: number;
+  desc: string;
 
   constructor(obj: GiftRecord) {
     if (!obj.name || obj.name.length < 3 || obj.name.length > 55) {
@@ -24,17 +25,22 @@ export class GiftRecord implements GiftEntity {
     this.id = obj.id;
     this.name = obj.name;
     this.count = obj.count;
+    this.desc = obj.desc;
   }
 
   async insert(): Promise<string> {
     if (!this.id) {
       this.id = uuid();
     }
-    await pool.execute('INSERT INTO `gifts` VALUES(:id, :name, :count)', {
-      id: this.id,
-      name: this.name,
-      count: this.count,
-    });
+    await pool.execute(
+      'INSERT INTO `gifts` VALUES(:id, :name, :count, :desc)',
+      {
+        id: this.id,
+        name: this.name,
+        count: this.count,
+        desc: this.desc,
+      }
+    );
     return this.id;
   }
 

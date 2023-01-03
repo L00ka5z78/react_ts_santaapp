@@ -8,6 +8,7 @@ export const AddGift = () => {
     const [form, setForm] = useState<CreateGiftReq>({
         name: '',
         count: 0,
+        desc: '',
     });
 
     const [loading, setLoading] = useState<boolean>(false)
@@ -73,6 +74,17 @@ export const AddGift = () => {
                     type="number"
                     value={form.count}
                     onChange={e => updateForm('count', Number(e.target.value))}
+                />
+            </label>
+        </p>
+
+        <p>
+            <label>
+                Description: <br/>
+                <textarea
+                    placeholder="please, describe..."
+                    value={form.desc}
+                    onChange={e => updateForm('desc', e.target.value)}
                 />
             </label>
         </p>

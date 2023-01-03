@@ -37,6 +37,9 @@ export const GiftsTableRow = (props: Props) => {
             <td>
                 <a href="#" onClick={deleteGift}>🗑</a>
             </td>
+            <td>
+                {props.gift.desc}
+            </td>
         </tr>
     );
 };
