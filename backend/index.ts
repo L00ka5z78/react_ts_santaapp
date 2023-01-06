@@ -5,6 +5,7 @@ import { handleError } from './utils/error';
 import { homeRouter } from './routers/home';
 import { childRouter } from './routers/child';
 import { giftRouter } from './routers/gift';
+import authRouter from './routers/auth';
 import './utils/db';
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(express.json()); //Content-type: application/json
 app.use('/', homeRouter);
 app.use('/child', childRouter);
 app.use('/gift', giftRouter);
+app.use('/auth', authRouter);
 
 app.use(handleError);
 
