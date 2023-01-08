@@ -9,7 +9,7 @@ import {SingleGiftView} from "./views/SingleGiftView";
 import {HomePageView} from "./views/pages/Home/HomePageView";
 import {Footer} from "./components/Footer/Footer";
 import {LoginPage} from "./views/pages/Login/LoginPage";
-import { RegisterPage } from './views/pages/Register/RegisterPage';
+import {RegisterPage} from './views/pages/Register/RegisterPage';
 
 export const App = () => {
     return (

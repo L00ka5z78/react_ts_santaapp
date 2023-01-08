@@ -21,7 +21,7 @@ export const RegisterPage = () => {
         setInputs(prev => ({...prev, [e.target.name]: e.target.value}))
     }
     // checking if the register form works well
-    console.log(inputs);
+    // console.log(inputs);
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -39,7 +39,7 @@ export const RegisterPage = () => {
         } catch (err) {
             console.log(err);
         }
-//posprawdzaj query stringa, spacje baktiki nawiasy
+
     }
 
     return (
@@ -60,3 +60,4 @@ export const RegisterPage = () => {
         </div>
     )
 }
+

@@ -18,7 +18,8 @@ export const register = (req: Request, res: Response) => {
       const hash = bcrypt.hashSync(req.body.password, salt);
 
       const userData =
-        'INSERT INTO `users` (`username`, `email`, `password`) VALUES (?)';
+        'INSERT INTO `users`(`username`, `email`, `password`) VALUES (?, ?, ?)';
+
       const value = [req.body.username, req.body.email, hash];
 
       pool.query(userData, value),
