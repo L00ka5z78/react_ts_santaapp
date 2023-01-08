@@ -6,6 +6,7 @@ import { homeRouter } from './routers/home';
 import { childRouter } from './routers/child';
 import { giftRouter } from './routers/gift';
 import authRouter from './routers/auth';
+import * as cookieParser from 'cookie-parser';
 import './utils/db';
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(
 );
 
 app.use(express.json()); //Content-type: application/json
+app.use(cookieParser());
 
 app.use('/', homeRouter);
 app.use('/child', childRouter);
