@@ -18,12 +18,12 @@ export const register = (req: Request, res: Response) => {
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(req.body.password, salt);
 
-      const userData =
+      const usersData =
         'INSERT INTO `users`(`username`, `email`, `password`) VALUES (?, ?, ?)';
 
-      const value = [req.body.username, req.body.email, hash];
+      const values = [req.body.username, req.body.email, hash];
 
-      pool.query(userData, value),
+      pool.query(usersData, values),
         (err: string, data: string) => {
           if (err) return res.json(err);
           return res.status(200).json('User has been created');
@@ -54,7 +54,7 @@ export const login = (req: Request, res: Response) => {
       const { password, ...otherData } = data[0];
 
       res
-        .cookie('acces_token', token, {
+        .cookie('access_token', token, {
           httpOnly: true,
         })
         .status(200)

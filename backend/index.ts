@@ -14,8 +14,16 @@ const app = express();
 app.use(
   cors({
     origin: 'http://localhost:3000',
+    methods: ['POST', 'PUT', 'GET', 'DELETE'],
+    credentials: true,
   })
 );
+
+// cors({
+//   origin: 'http://localhost:3000',
+//   methods: ['POST', 'PUT', 'GET', 'DELETE'],
+//   credentials: true,
+// }),
 
 app.use(express.json()); //Content-type: application/json
 app.use(cookieParser());
