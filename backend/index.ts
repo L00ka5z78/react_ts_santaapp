@@ -5,9 +5,10 @@ import { handleError } from './utils/error';
 import { homeRouter } from './routers/home';
 import { childRouter } from './routers/child';
 import { giftRouter } from './routers/gift';
-import authRouter from './routers/auth';
+// import authRouter from './routers/auth';
 import * as cookieParser from 'cookie-parser';
 import './utils/db';
+import {userRouter} from "./routers/userRouter";
 
 const app = express();
 
@@ -31,7 +32,8 @@ app.use(cookieParser());
 app.use('/', homeRouter);
 app.use('/child', childRouter);
 app.use('/gift', giftRouter);
-app.use('/auth', authRouter);
+// app.use('/auth', authRouter);
+app.use('/auth', userRouter);
 
 app.use(handleError);
 

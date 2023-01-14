@@ -12,33 +12,40 @@ userRouter
     //     await newUser.insert();
     //     res.json(newUser);
     // });
-.post('/login', async (req: Request<unknown, UserLoginRes, UserLoginReq>, res, next) => {
-    const { email, password } = req.body;
-    if (!email || !password) {
-        throw new HttpException(400, 'Please include email and password.');
-    }
 
-    const user = await UserRecord.getUserByEmail(email);
-    if (!user) {
-        throw new WrongCredentialsException();
-    }
-    const isMatched = await bcrypt.compare(password, user.password);
-    if (!isMatched) {
-        throw new WrongCredentialsException();
-    }
+    .post('/register', async (req: Request<unknown>, res, next) => {
+        // const { email, password } = req.body;
+        // if (!email || !password) {
+        //     throw new HttpException(400, 'Please include email and password.');
+        // }
 
-    const accessTokenData = createAccessToken(await generateCurrentToken(user), user.id);
+// .post('/register', async (req: Request<unknown, UserLoginRes, UserLoginReq>, res, next) => {
+//     const { email, password } = req.body;
+//     if (!email || !password) {
+//         throw new HttpException(400, 'Please include email and password.');
+//     }
 
-    delete user.password;
-    delete user.currentToken;
+    // const user = await UserRecord.getUserByEmail(email);
+    // if (!user) {
+    //     throw new WrongCredentialsException();
+    // }
+    // const isMatched = await bcrypt.compare(password, user.password);
+    // if (!isMatched) {
+    //     throw new WrongCredentialsException();
+    // }
 
-    res
-        .cookie(CookiesNames.AUTHORIZATION, accessTokenData.accessToken, {
-            maxAge: accessTokenData.expiresIn * 1000, // Example: JWT_ACCESS_TOKEN_EXPIRATION_TIME=3600 => Expires in 1 hour (3600 seconds * 1000 milliseconds).
-            secure: false,
-            domain: 'localhost',
-            httpOnly: true,
-        })
-        .status(200)
-        .json(user as UserLoginRes);
+    // const accessTokenData = createAccessToken(await generateCurrentToken(user), user.id);
+    //
+    // delete user.password;
+    // delete user.currentToken;
+
+    // res
+    //     .cookie(CookiesNames.AUTHORIZATION, accessTokenData.accessToken, {
+    //         maxAge: accessTokenData.expiresIn * 1000, // Example: JWT_ACCESS_TOKEN_EXPIRATION_TIME=3600 => Expires in 1 hour (3600 seconds * 1000 milliseconds).
+    //         secure: false,
+    //         domain: 'localhost',
+    //         httpOnly: true,
+    //     })
+    //     .status(200)
+    //     .json(user as UserLoginRes);
 });

@@ -10,14 +10,16 @@ import {HomePageView} from "./views/pages/Home/HomePageView";
 import {Footer} from "./components/Footer/Footer";
 import {LoginPage} from "./views/pages/Login/LoginPage";
 import {RegisterPage} from './views/pages/Register/RegisterPage';
+import {UserView} from "./views/UserView";
 
 export const App = () => {
     return (
         <>
             <Header/>
             <Routes>
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="/register" element={<UserView/>}/>
+                {/*<Route path="/login" element={<LoginPage/>}/>*/}
+                {/*<Route path="/register" element={<RegisterPage/>}/>*/}
                 <Route path="/gift" element={<GiftsView/>}/>
                 <Route path="/" element={<HomePageView/>}/>
                 <Route path="/gift/:idOfGift" element={<SingleGiftView/>}/>

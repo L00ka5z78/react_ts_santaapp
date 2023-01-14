@@ -2,7 +2,7 @@ import React, {FormEvent, useState} from 'react';
 import {CreateUserReq, UserEntity} from "../../../backend/types/user";
 import {Spinner} from "./common/Spinner/Spinner";
 
-import '../../index.css'
+import '../../src/index.css'
 import {Link, useNavigate} from "react-router-dom";
 
 export const AddUser = () => {
@@ -29,7 +29,7 @@ export const AddUser = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3001/gift`, {
+            const res = await fetch(`http://localhost:3001/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ export const AddUser = () => {
                     type="text"
                     placeholder="insert your name..."
                     value={form.userName}
-                    onChange={e => updateForm('name', e.target.value)}
+                    onChange={e => updateForm('userName', e.target.value)}
                 />
             </label>
         </p>
