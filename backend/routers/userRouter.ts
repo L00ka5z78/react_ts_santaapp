@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-
+import HttpException from '../utils/httpException'
 import { UserRecord } from '../records/user.records';
 import { CreateUserReq, GetSingleUserRes, UserEntity } from '../types/user';
 import { ValidationError } from '../utils/error';
@@ -14,16 +14,11 @@ userRouter
     // });
 
     .post('/register', async (req: Request<unknown>, res, next) => {
-        // const { email, password } = req.body;
-        // if (!email || !password) {
-        //     throw new HttpException(400, 'Please include email and password.');
-        // }
+        const { email, password } = req.body;
+        if (!email || !password) {
+            throw new HttpException( 'Please include email and password.', 400,);
+        }
 
-// .post('/register', async (req: Request<unknown, UserLoginRes, UserLoginReq>, res, next) => {
-//     const { email, password } = req.body;
-//     if (!email || !password) {
-//         throw new HttpException(400, 'Please include email and password.');
-//     }
 
     // const user = await UserRecord.getUserByEmail(email);
     // if (!user) {
