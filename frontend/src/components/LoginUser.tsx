@@ -5,7 +5,7 @@ import {Spinner} from "./common/Spinner/Spinner";
 import '../../src/index.css'
 import {Link, useNavigate} from "react-router-dom";
 
-export const RegisterUser = () => {
+export const LoginUser = () => {
     const [form, setForm] = useState<CreateUserReq>({
         userName: '',
         email: '',
@@ -29,7 +29,7 @@ export const RegisterUser = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3001/register`, {
+            const res = await fetch(`http://localhost:3001/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ export const RegisterUser = () => {
 
 
     return <form  className="form" onSubmit={sendForm}>
-        <h2>Register</h2>
+        <h2>Login</h2>
         <p>
             <label>
                 Username: <br/>
@@ -68,17 +68,6 @@ export const RegisterUser = () => {
                     placeholder="insert your name..."
                     value={form.userName}
                     onChange={e => updateForm('userName', e.target.value)}
-                />
-            </label>
-        </p>
-        <p>
-            <label>
-                Email: <br/>
-                <input
-                    type="text"
-                    placeholder="email..."
-                    value={form.email}
-                    onChange={e => updateForm('email', e.target.value)}
                 />
             </label>
         </p>
@@ -94,28 +83,11 @@ export const RegisterUser = () => {
             </label>
         </p>
 
-        <button className="btn" type="submit">Register</button>
+        <button className="btn" type="submit">Login</button>
         <div>
-            <span>Have account? <Link to="/login">Login</Link></span>
+            <span>Have NO account? <Link to="/register">Register</Link></span>
         </div>
 
     </form>
 
-    // return (
-    //     <div className="auth">
-    //         <h1 className="h1">Register</h1>
-    //         <form className="register_form">
-    //             <input required className="input_form" type="text" placeholder="username" name='username'
-    //                    onChange={handleChange}/>
-    //             <input required className="input_form" type="email" placeholder="email" name='email'
-    //                    onChange={handleChange}/>
-    // {/*            <input required className="input_form" type="password" placeholder="password" name='password'*/}
-    // {/*                   onChange={handleChange}/>*/}
-    // {/*            <button className="btn_log" onClick={handleSubmit}>Register</button>*/}
-    // {/*            {error && <p className="p_err">{error}</p>}*/}
-    //
-    // {/*            <span>Already have account? <Link to="/login">Login</Link></span>*/}
-    // {/*        </form>*/}
-    // {/*    </div>*/}
-    // {/*)*/}
 }

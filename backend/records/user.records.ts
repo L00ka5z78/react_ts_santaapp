@@ -12,11 +12,17 @@ export class UserRecord implements UserEntity {
     email: string;
     password: string | number;
 
-    constructor(obj: UserRecord) {
+    constructor(obj: UserEntity) {  //było UserRecord, ma być entity, UserRecord ma w sobie  metody, i wtedy on krzyczy, że ich nie podałeś...
+        // a do obiektu chcesz podać tylko pewne zmienne.
+
         if (!obj.userName || obj.userName.length < 3 || obj.userName.length > 55) {
             throw new ValidationError(
                 'Your name has to be between 3 - 55 characters'
             );
+        }
+
+        if (!obj.email || typeof obj.email !== 'string' || obj.email.indexOf('@') === -1) {
+            throw new ValidationError('Invalid E-mail')
         }
 
         this.id = obj.id;
@@ -25,53 +31,38 @@ export class UserRecord implements UserEntity {
         this.password = obj.password;
     }
 
-    async insert(): Promise<string> {
+
+// get user by email
+
+    static async getUserByEmail(email: string) {
+        const [results] = (await pool.execute(
+            "SELECT * FROM `users` WHERE `email` = :email", {
+                email,
+            }
+        )) as UserRecordResult;
+        return results.length === 0 ? null : new UserRecord(results[0]);
+
+    }
+// add - create user
+
+    async addUserToDatabase(): Promise<string>  {
         if (!this.id) {
             this.id = uuid();
+
+            await pool.execute(
+                'INSERT INTO `users` VALUES(:id, :userName, :email, :password)',
+                {
+                    id: this.id,
+                    userName: this.userName,
+                    email: this.email,
+                    password: this.password,
+                }
+            );
+            return this.id;
         }
-        await pool.execute(
-            'INSERT INTO `users` VALUES(:id, :userName, :email, :password)',
-            {
-                id: this.id,
-                userName: this.userName,
-                email: this.email,
-                password: this.password,
-            }
-        );
-        return this.id;
     }
-}   //added
 
-    // static async listAll(): Promise<GiftRecord[]> {
-    //     const [results] = (await pool.execute(
-    //         'SELECT * FROM `gifts`'
-    //     )) as GiftRecordResult;
-    //     return results.map((obj) => new GiftRecord(obj));
-    // }
 
-    // static async getOne(id: string): Promise<GiftRecord | null> {
-    //     const [results] = (await pool.execute(
-    //         'SELECT * FROM `gifts` WHERE `id` = :id',
-    //         {
-    //             id,
-    //         }
-    //     )) as GiftRecordResult;
-    //     return results.length === 0 ? null : new GiftRecord(results[0]);
-    // }
-
-    // async delete(): Promise<void> {
-    //     await pool.execute('DELETE FROM `gifts` WHERE `id` = :id', {
-    //         id: this.id,
-    //     });
-    // }
-
-    // async countGivenGifts(): Promise<number> {
-    //     const [[{ count }]] = (await pool.execute(
-    //         'SELECT COUNT (*) AS `count` FROM `children` WHERE `giftId` = :id',
-    //         {
-    //             id: this.id,
-    //         }
-    //     )) as GiftRecordResult;
-    //     return count;
-    // }
-// }
+    //update user
+    async updateUser(): Promise<void> {}
+}

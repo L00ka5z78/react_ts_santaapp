@@ -32,10 +32,12 @@ app.use(cookieParser());
 app.use('/', homeRouter);
 app.use('/child', childRouter);
 app.use('/gift', giftRouter);
-// app.use('/auth', authRouter);
-app.use('/auth', userRouter);
+// app.use('/login', userRouter);
 
 app.use(handleError);
+
+app.post('/register',userRouter )
+app.post('/auth/login', userRouter )
 
 app.listen(3001, 'localhost', () => {
   console.log('Server is ON and running on http://localhost:3001');

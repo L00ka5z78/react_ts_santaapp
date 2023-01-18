@@ -2,7 +2,7 @@ import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error';
 import { v4 as uuid } from 'uuid';
 import { FieldPacket } from 'mysql2';
-import { ChildEntity } from '../types/child/child.entity';
+import { ChildEntity } from '../types';
 
 type ChildRecordResult = [ChildRecord[], FieldPacket[]];
 

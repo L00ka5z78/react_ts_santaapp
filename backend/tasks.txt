@@ -1,0 +1,13 @@
+1. Pobierasz dane rejestracyjne z req.body  *
+2. Walidujesz te dane   *
+3. Sprawdzasz czy już nie istnieje taki użytkownik (zakładam że np. email nie może się nigdy powtarzać, więc sprawdasz to w bazie po emailu)    *
+3a. Jeśli taki użytkownik istnieje, to wyrzucasz Error. *
+4. Hashujesz hasło  *
+5. Tworzysz nowego użytkownika  *
+6. Zapisujesz użytkownika do bazy danych    *
+7. Zwracasz `res.status(201).json(user). W JSON póki co może być użytkownik.    *
+
+Uwagi:
+1. Póki co wyrzucaj proste błędy poprzez new Error('....")
+2. Praca z bazą powinna odbywać się na oddzielnej klasie. Tam twórz metody, a tutaj z nich tylko korzystaj.
+3. Do hashowania skorzystaj z bcrypt
