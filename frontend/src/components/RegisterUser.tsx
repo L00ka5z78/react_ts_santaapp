@@ -5,7 +5,7 @@ import {Spinner} from "./common/Spinner/Spinner";
 import '../../src/index.css'
 import {Link, useNavigate} from "react-router-dom";
 
-export const AddUser = () => {
+export const LoginUser = () => {
     const [form, setForm] = useState<CreateUserReq>({
         userName: '',
         email: '',
@@ -94,10 +94,11 @@ export const AddUser = () => {
             </label>
         </p>
 
-
-
-
         <button className="btn" type="submit">Register</button>
+        <div>
+            <span>Have account? <Link to="/login">Login</Link></span>
+        </div>
+
     </form>
 
     // return (
