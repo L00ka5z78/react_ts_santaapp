@@ -26,10 +26,8 @@ export const RegisterUser = () => {
 
     const sendForm = async (e: FormEvent) => {
         e.preventDefault();
-        console.log('1');
         setLoading(true);
         try {
-            console.log('2');
             const res = await fetch(`http://localhost:3001/user/register`, {
                 method: 'POST',
                 headers: {
@@ -38,26 +36,25 @@ export const RegisterUser = () => {
                 body: JSON.stringify(form),
             });
             // navigate('/login')
-            console.log('3');
             const data: UserEntity = await res.json()
-            setResultInfo(`${data.userName} added with this ${data.email} `)
+            setResultInfo(`Dear ${data.userName} you are registered with this data: ${data.email} ${data.userName}`)
         } finally {
-            setLoading(false);
+            setLoading(false);      //dodac walidacje na istniejacych, nieistniejacych, dl znakow,email itp
 
         }
     };
-    console.log('4');
     if (loading) {
         return <Spinner/>
     }
 
     if (resultInfo !== null) {
         return <div>
-            <p><strong>{resultInfo}</strong></p>
-            <button onClick={() => setResultInfo(null)}>Add another one</button>
+            <p><strong>{resultInfo}  Go to Log in.</strong></p>
+            <div>
+                <span><Link to="/login">Login</Link></span>
+            </div>
         </div>;
     }
-    console.log('5');
 
     return <form className="form" onSubmit={sendForm}>
         <h2>Register</h2>
@@ -94,16 +91,13 @@ export const RegisterUser = () => {
                 />
             </label>
         </p>
-
-        {/*<button className="btn">Register</button>*/}
         <button className="btn" type="submit">Register</button>
         <div>
             <span>Have account? <Link to="/login">Login</Link></span>
         </div>
-
     </form>
 
-    // return (
+    // return ( //formularz przyklad
     //     <div className="auth">
     //         <h1 className="h1">Register</h1>
     //         <form className="register_form">

@@ -36,7 +36,6 @@ export const LoginUser = () => {
                 },
                 body: JSON.stringify(form),
             });
-            // navigate('/register')
 
             const data: UserEntity = await res.json()
             setResultInfo(`${data.userName} added with this ${data.email} `)
@@ -45,18 +44,10 @@ export const LoginUser = () => {
 
         }
     };
-
     if (loading) {
         return <Spinner/>
     }
-
-    if (resultInfo !== null) {
-        return <div>
-            <p><strong>{resultInfo}</strong></p>
-            <button onClick={() => setResultInfo(null)}>Add another one</button>
-        </div>;
-    }
-
+    console.log(resultInfo);
 
     return <form  className="form" onSubmit={sendForm}>
         <h2>Login</h2>
