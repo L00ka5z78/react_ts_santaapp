@@ -4,6 +4,9 @@ import {Spinner} from "./common/Spinner/Spinner";
 
 import '../../src/index.css'
 import {Link, useNavigate} from "react-router-dom";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const RegisterUser = () => {
     const [form, setForm] = useState<CreateUserReq>({
@@ -25,6 +28,39 @@ export const RegisterUser = () => {
     };
 
     const sendForm = async (e: FormEvent) => {
+
+        if (!form.userName || !form.email || !form.password) {
+            toast.info('Please fill all required fields.', {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+
+        if (!form.userName || form.userName.length < 3 || form.userName.length > 55) {
+            toast.warn(
+                'Your name has to be between 3 - 55 characters', {
+                    position: toast.POSITION.TOP_CENTER
+                }
+            );
+        }
+
+        if (!form.password || form.password.length < 8) {
+            toast.warn(
+                'Password has to be at least 8 characters', {
+                    position: toast.POSITION.TOP_CENTER
+                }
+            );
+        }
+
+        // if (form.email) {    //daje blad jak wpisze email jak pobrac maila z bazy?? zeby to sprawdzic?
+        //     alert('User already exist');
+        // }
+        if (!form.email || form.email.indexOf('@') === -1) {
+            toast.error('Invalid E-mail', {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+
+
         e.preventDefault();
         setLoading(true);
         try {
@@ -49,7 +85,7 @@ export const RegisterUser = () => {
 
     if (resultInfo !== null) {
         return <div>
-            <p><strong>{resultInfo}  Go to Log in.</strong></p>
+            <p><strong>{resultInfo} Go to Log in.</strong></p>
             <div>
                 <span><Link to="/login">Login</Link></span>
             </div>
@@ -63,6 +99,7 @@ export const RegisterUser = () => {
                 Username: <br/>
                 <input
                     type="text"
+                    required
                     placeholder="insert your name..."
                     value={form.userName}
                     onChange={e => updateForm('userName', e.target.value)}
@@ -74,6 +111,7 @@ export const RegisterUser = () => {
                 Email: <br/>
                 <input
                     type="text"
+                    required
                     placeholder="email..."
                     value={form.email}
                     onChange={e => updateForm('email', e.target.value)}
@@ -85,6 +123,7 @@ export const RegisterUser = () => {
                 Password: <br/>
                 <input
                     type="password"
+                    required
                     placeholder="password..."
                     value={form.password}
                     onChange={e => updateForm('password', e.target.value)}

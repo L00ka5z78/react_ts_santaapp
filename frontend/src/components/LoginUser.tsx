@@ -4,6 +4,8 @@ import {Spinner} from "./common/Spinner/Spinner";
 
 import '../../src/index.css'
 import {Link, useNavigate} from "react-router-dom";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginUser = () => {
     const [form, setForm] = useState<CreateUserReq>({
@@ -26,6 +28,26 @@ export const LoginUser = () => {
 
     const sendForm = async (e: FormEvent) => {
         e.preventDefault();
+
+        if (!form.userName || form.userName.length < 3 || form.userName.length > 55) {
+            toast.warn(
+                'Your name has to be between 3 - 55 characters', {
+                    position: toast.POSITION.TOP_CENTER
+                }
+            );
+        }
+
+        if (!form.password || form.password.length < 8) {
+            toast.warn(
+                'Password has to be at least 8 characters', {
+                    position: toast.POSITION.TOP_CENTER
+                }
+            );
+        }
+
+
+
+
 
         setLoading(true);
         try {

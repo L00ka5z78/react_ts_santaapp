@@ -58,6 +58,8 @@ export class UserRecord implements UserEntity {
     }
 
     static async getUserById(id: string) {
+
+
         const [results] = (await pool.execute("SELECT * FROM `users` WHERE `id` = :id", {
                 id,
             }

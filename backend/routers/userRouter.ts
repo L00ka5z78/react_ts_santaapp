@@ -48,8 +48,9 @@ a do obiektu chcesz podać tylko pewne zmienne. */
         await newUser.addUserToDatabase()
         res
             .status(201)
-            .json(newUser);
+            .json(newUser)
     })
+
 
     .post('/login', async (req: Request, res: Response, next) => {
         const {userName, email, password} = req.body;
