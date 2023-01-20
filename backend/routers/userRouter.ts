@@ -5,11 +5,12 @@ import {generateToken} from '../utils/authToken';
 import * as bcrypt from 'bcrypt'
 import {CreateUserReq, GetSingleUserRes, UserEntity} from '../types/user';
 import {ValidationError} from '../utils/error';
+import {authMiddleware} from "../middleware/authMiddleware";
+import RequestWithUser from "../services/reqWithUser.interface";
 
 export const userRouter = Router();
 
 userRouter
-
 
     .post('/register', async (req: Request<void>, res, next) => {
 
@@ -21,10 +22,11 @@ userRouter
         // check if user exist
         //3a. Jeśli taki użytkownik istnieje, to wyrzucasz Error. *
 
-        const user = await UserRecord.getUserByEmail(email);
-        if (user) {
-            throw new ValidationError('User already exist');
-        }
+        // const user = await UserRecord.getUserByEmail(email);
+        // if (user) {
+        //     throw new ValidationError('User already exist');
+        // }
+        //******************************* JAK TEN IF JEST to WYWALA BACKEND PRZY REJESTRACJI
 
         // hash the password and create user
 
@@ -49,9 +51,7 @@ a do obiektu chcesz podać tylko pewne zmienne. */
             .json(newUser);
     })
 
-
     .post('/login', async (req: Request, res: Response, next) => {
-
         const {userName, email, password} = req.body;
 
         if (!userName || !email || !password) {
@@ -67,7 +67,7 @@ a do obiektu chcesz podać tylko pewne zmienne. */
 
         // 4. Sprawdzanie czy hasło zgadza się z tym w bazie (poprzez porównanie hasła z req.body z hashem z bazy) (jeśli złe hasło to wyrzucasz błąd)
 
-        const isPasswordMatched = await bcrypt.compare(req.body.password, userName.password);
+        const isPasswordMatched = await bcrypt.compare(req.body.password, user.password);
 
         //  userName.password === zapisany hash w bazie wygenerowany przy rejestracji
         //req.body.password to co wpisuje na stronie i compare to porównuje
@@ -76,10 +76,38 @@ a do obiektu chcesz podać tylko pewne zmienne. */
             throw new ValidationError("Passwords don't match!");
         }
 
-        res.cookie("token", generateToken(user));    //
-        res
+        /*  2. Mając już tą funkcję w /login już po sprawdzeniu hasła, odpalasz tą funkcje z pkt 1 i przypisujesz ją do zmiennej.*/
+        // 3. Następnie przekazujesz odpowiednie dane do coookie
+
+        res.cookie("token", generateToken(user), {
+            maxAge: 1000 * 60,
+            httpOnly: true,
+            secure: false,
+            domain: "localhost",
+        })
             .status(200)
-            .json(user)
+            .json(user as UserRecord)
     })
 
+    .post('/logout', async (req: Request, res: Response) => {
 
+        res.clearCookie('token', {
+            maxAge: 0,
+            httpOnly: true,
+            secure: false,
+            domain: "localhost",
+        })
+            .status(200)
+            .json("You are logged out!")
+    })
+
+    /*
+        Dodaj też np ścieżkę user/profile i spróbują ja uwierzytelnić, i jak się uda to niech w json zwroci zalogowanego użytkownika.
+        .*/
+
+    .get('/profile', authMiddleware, async (req: RequestWithUser, res: Response) => {
+
+        res
+            .status(200)
+            .json(req.user)
+    })

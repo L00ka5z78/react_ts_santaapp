@@ -34,6 +34,7 @@ export const AddChild = () => {
                 },
                 body: JSON.stringify(form),
             });
+            // window.location.reload();
             const data: ChildEntity = await res.json()
             setResultInfo(`${data.name} has been created on Santa's list`)
         } finally {

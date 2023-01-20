@@ -1,4 +1,3 @@
-import express from 'express'
 import * as jwt from "jsonwebtoken"
 import { JwtPayload } from 'jsonwebtoken';
 import * as dotenv from 'dotenv'
@@ -10,26 +9,22 @@ import {UserRecord} from '../records/user.records'
 
 interface UserPayload extends JwtPayload {
     id: string;
-    userName: string;
     email: string;
-    password: string | number;
 }
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-export const generateToken = (user: UserRecord): string => {
+export const generateToken = (user: UserRecord): string => {    //przyjmuje UserRecord
+
     return jwt.sign({
         id: user.id,
         email: user.email,
     },
         JWT_SECRET, {
-        expiresIn: '1min',
+            expiresIn: 1000 * 60,
     });
 }
 
-// res.cookie("access_token", generateToken, {     // <== Cannot find name 'res'.
-//     httpOnly: true
-// })
 
 
 

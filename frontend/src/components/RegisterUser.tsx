@@ -15,7 +15,7 @@ export const RegisterUser = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [resultInfo, setResultInfo] = useState<string | null>(null)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const updateForm = (key: string, value: any) => {
         setForm(form => ({
@@ -26,18 +26,19 @@ export const RegisterUser = () => {
 
     const sendForm = async (e: FormEvent) => {
         e.preventDefault();
-
+        console.log('1');
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3001/register`, {
+            console.log('2');
+            const res = await fetch(`http://localhost:3001/user/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(form),
             });
-            navigate('/login')
-
+            // navigate('/login')
+            console.log('3');
             const data: UserEntity = await res.json()
             setResultInfo(`${data.userName} added with this ${data.email} `)
         } finally {
@@ -45,7 +46,7 @@ export const RegisterUser = () => {
 
         }
     };
-
+    console.log('4');
     if (loading) {
         return <Spinner/>
     }
@@ -56,9 +57,9 @@ export const RegisterUser = () => {
             <button onClick={() => setResultInfo(null)}>Add another one</button>
         </div>;
     }
+    console.log('5');
 
-
-    return <form  className="form" onSubmit={sendForm}>
+    return <form className="form" onSubmit={sendForm}>
         <h2>Register</h2>
         <p>
             <label>
@@ -94,6 +95,7 @@ export const RegisterUser = () => {
             </label>
         </p>
 
+        {/*<button className="btn">Register</button>*/}
         <button className="btn" type="submit">Register</button>
         <div>
             <span>Have account? <Link to="/login">Login</Link></span>

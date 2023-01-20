@@ -29,14 +29,14 @@ export const LoginUser = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3001/login`, {
+            const res = await fetch(`http://localhost:3001/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(form),
             });
-            navigate('/login')
+            // navigate('/register')
 
             const data: UserEntity = await res.json()
             setResultInfo(`${data.userName} added with this ${data.email} `)

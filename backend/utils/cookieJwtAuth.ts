@@ -14,7 +14,6 @@ exports.cookieJwtAuth = (req: Request, res: Response, next: NextFunction) => {
         res.clearCookie("token")
         return res
             .json('Cookie cleared')
-            .redirect('/')
     }
 }
 
