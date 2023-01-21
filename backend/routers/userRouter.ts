@@ -6,7 +6,7 @@ import * as bcrypt from 'bcrypt'
 import {CreateUserReq, GetSingleUserRes, UserEntity} from '../types/user';
 import {ValidationError} from '../utils/error/error';
 import {authMiddleware} from "../middleware/authMiddleware";
-import RequestWithUser from "../services/reqWithUser.interface";
+import RequestWithUser from "../services/interfaces/reqWithUser.interface";
 
 export const userRouter = Router();
 

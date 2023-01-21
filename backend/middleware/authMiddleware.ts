@@ -1,6 +1,6 @@
 import {NextFunction, request, Response} from 'express';
 import * as jwt from 'jsonwebtoken';
-import RequestWithUser from '../services/reqWithUser.interface';
+import RequestWithUser from '../services/interfaces/reqWithUser.interface';
 import {UserRecord} from "../records/user.records";
 import {ValidationError} from "../utils/error/error";
 

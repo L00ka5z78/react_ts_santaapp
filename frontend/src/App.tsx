@@ -10,6 +10,7 @@ import {HomePageView} from "./views/pages/Home/HomePageView";
 import {Footer} from "./components/Footer/Footer";
 import {RegisterView} from "./views/pages/Register/RegisterView";
 import {LoginView} from "./views/pages/Login/LoginView";
+import {SinglePostPageView} from "./views/pages/SinglePost/SinglePostPageView";
 
 export const App = () => {
     return (
@@ -21,6 +22,7 @@ export const App = () => {
                 <Route path="/gift" element={<GiftsView/>}/>
                 <Route path="/" element={<HomePageView/>}/>
                 <Route path="/gift/:idOfGift" element={<SingleGiftView/>}/>
+                <Route path="/post/:id" element={<SinglePostPageView/>}/>
                 <Route path="/child" element={<ChildView/>}/>
                 <Route path="/*" element={<NotFoundView/>}/>
             </Routes>
