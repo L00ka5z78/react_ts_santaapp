@@ -2,7 +2,7 @@ import {NextFunction, request, Response} from 'express';
 import * as jwt from 'jsonwebtoken';
 import RequestWithUser from '../services/reqWithUser.interface';
 import {UserRecord} from "../records/user.records";
-import {ValidationError} from "../utils/error";
+import {ValidationError} from "../utils/error/error";
 
 
 interface DataStoredInToken {

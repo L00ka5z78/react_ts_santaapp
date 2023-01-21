@@ -8,8 +8,8 @@ import {NotFoundView} from "./views/NotFoundView";
 import {SingleGiftView} from "./views/SingleGiftView";
 import {HomePageView} from "./views/pages/Home/HomePageView";
 import {Footer} from "./components/Footer/Footer";
-import {RegisterView} from "./views/RegisterView";
-import {LoginView} from "./views/LoginView";
+import {RegisterView} from "./views/pages/Register/RegisterView";
+import {LoginView} from "./views/pages/Login/LoginView";
 
 export const App = () => {
     return (

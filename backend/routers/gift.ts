@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 
 import { GiftRecord } from '../records/gift.record';
 import { CreateGiftReq, GetSingleGiftRes, GiftEntity } from '../types';
-import { ValidationError } from '../utils/error';
+import { ValidationError } from '../utils/error/error';
 
 export const giftRouter = Router();
 

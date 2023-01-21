@@ -1,16 +1,16 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import * as express from 'express';
-import * as cors from 'cors';
 import 'express-async-errors';
 import * as bodyParser from 'body-parser';
-import {handleError} from './utils/error';
+import {handleError} from './utils/error/error';
 import {homeRouter} from './routers/home';
 import {childRouter} from './routers/child';
 import {giftRouter} from './routers/gift';
 import {userRouter} from "./routers/userRouter";
 import './utils/db';
 import * as cookieParser from 'cookie-parser';
+import * as cors from 'cors';
 
 const app = express();
 
@@ -30,6 +30,7 @@ app.use('/', homeRouter);
 app.use('/child', childRouter);
 app.use('/gift', giftRouter);
 app.use('/user', userRouter);
+// app.use('/post', postRouter);
 
 app.use(handleError);
 // app.post('/register', userRouter)

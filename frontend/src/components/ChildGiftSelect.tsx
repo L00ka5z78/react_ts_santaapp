@@ -15,6 +15,7 @@ export const ChildGiftSelect = (props: Props) => {
         e.preventDefault();
 
         await fetch(`http://localhost:3001/child/gift/${props.childId}`, {
+            // mode: 'no-cors',
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

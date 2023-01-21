@@ -2,31 +2,27 @@ import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error/error';
 import { v4 as uuid } from 'uuid';
 import { FieldPacket } from 'mysql2';
-import { UserEntity } from '../types';
+import { PostEntity } from '../types';
 
-type UserRecordResult = [UserRecord[], FieldPacket[]];
+type PostRecordResults = [PostRecord[], FieldPacket[]];
 
-export class UserRecord implements UserEntity {
+export class PostRecord implements PostEntity {
     id?: string;
-    userName: string;
-    email: string;
-    password: string;
+    postName: string;
+    // email: string;
+    // password: string;
 
-    constructor(obj: UserEntity) {  //było UserRecord, ma być entity, UserRecord ma w sobie  metody, i wtedy on krzyczy, że ich nie podałeś...
+    constructor(obj: PostEntity) {  //było UserRecord, ma być entity, UserRecord ma w sobie  metody, i wtedy on krzyczy, że ich nie podałeś...
         // a do obiektu chcesz podać tylko pewne zmienne.
 
-        if (!obj.userName || obj.userName.length < 3 || obj.userName.length > 55) {
+        if (!obj.postName || obj.postName.length < 3 || obj.postName.length > 55) {
             throw new ValidationError(
                 'Your name has to be between 3 - 55 characters'
             );
         }
-        if (!obj.email || typeof obj.email !== 'string' || obj.email.indexOf('@') === -1) {
-            throw new ValidationError('Invalid E-mail')
-        }
+
         this.id = obj.id;
-        this.userName = obj.userName;
-        this.email = obj.email;
-        this.password = obj.password;
+        this.postName = obj.postName;
     }
 
 
@@ -36,8 +32,8 @@ export class UserRecord implements UserEntity {
         const [results] = (await pool.execute("SELECT * FROM `users` WHERE `email` = :email", {
                 email,
             }
-        )) as UserRecordResult;
-        return results.length === 0 ? null : new UserRecord(results[0]);
+        )) as PostRecordResults;
+        return results.length === 0 ? null : new PostRecord(results[0]);
     }
 // add - create user
 
@@ -49,8 +45,8 @@ export class UserRecord implements UserEntity {
                 {
                     id: this.id,
                     userName: this.userName,
-                    email: this.email,
-                    password: this.password,
+                    // email: this.email,
+                    // password: this.password,
                 }
             );
             return this.id;
@@ -63,8 +59,8 @@ export class UserRecord implements UserEntity {
         const [results] = (await pool.execute("SELECT * FROM `users` WHERE `id` = :id", {
                 id,
             }
-        )) as UserRecordResult;
-        return results.length === 0 ? null : new UserRecord(results[0]);
+        )) as PostRecordResults;
+        return results.length === 0 ? null : new PostRecord(results[0]);
     }
 
 

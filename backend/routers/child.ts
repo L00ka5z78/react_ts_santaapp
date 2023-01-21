@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { ChildRecord } from '../records/child.record';
 import { GiftRecord } from '../records/gift.record';
 import { CreateChildReq, ListChildrenRes, SetGiftForChildReq } from '../types';
-import { ValidationError } from '../utils/error';
+import { ValidationError } from '../utils/error/error';
 
 export const childRouter = Router();
 

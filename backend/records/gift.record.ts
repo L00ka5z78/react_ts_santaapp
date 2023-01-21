@@ -1,5 +1,5 @@
 import { pool } from '../utils/db';
-import { ValidationError } from '../utils/error';
+import { ValidationError } from '../utils/error/error';
 import { v4 as uuid } from 'uuid';
 import { FieldPacket } from 'mysql2';
 import { GiftEntity } from '../types';
