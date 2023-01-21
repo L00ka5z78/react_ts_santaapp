@@ -6,6 +6,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './Header.css'
+//******************************adjust styling logo placement*****
 
 export const Header = () => {
 

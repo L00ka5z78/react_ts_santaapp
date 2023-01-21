@@ -1,0 +1,15 @@
+.post_menu {
+    flex: 5;
+    /*display: flex;*/
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    gap: 25px;
+    padding: 15px;
+
+}
