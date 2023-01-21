@@ -20,7 +20,6 @@ userRouter
             throw new HttpException('Please fill all required fields.', 400);
         }
         // check if user exist
-        //3a. Jeśli taki użytkownik istnieje, to wyrzucasz Error. *
 
         // const user = await UserRecord.getUserByEmail(email);
         // if (user) {

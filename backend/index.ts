@@ -8,6 +8,7 @@ import {homeRouter} from './routers/home';
 import {childRouter} from './routers/child';
 import {giftRouter} from './routers/gift';
 import {userRouter} from "./routers/userRouter";
+import {postRouter} from "./routers/postRouter";
 import './utils/db';
 import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
@@ -30,7 +31,7 @@ app.use('/', homeRouter);
 app.use('/child', childRouter);
 app.use('/gift', giftRouter);
 app.use('/user', userRouter);
-// app.use('/post', postRouter);
+app.use('/post', postRouter);
 
 app.use(handleError);
 // app.post('/register', userRouter)

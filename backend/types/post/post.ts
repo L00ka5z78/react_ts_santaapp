@@ -3,7 +3,10 @@ import { PostEntity } from './post.entity';
 export type CreatePostReq = Omit<PostEntity, 'id'>;
 
 export interface GetSinglePostRes {
-    postName: PostEntity;
-    // email: string;
-    // password: string | number;
+    title: PostEntity;
+    desc: string;
+    img: string;
+    date: Date;
+    uid: string;
+    cat: string;
 }
