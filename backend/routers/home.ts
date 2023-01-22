@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 export const homeRouter = Router();
 
-homeRouter.get('/', (req, res) => {
-  res.json('home/home');
+homeRouter
+    .get('/', (req, res) => {
+  res.json('homepage');
 });

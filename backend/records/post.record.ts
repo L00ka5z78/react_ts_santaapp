@@ -29,9 +29,9 @@ export class PostRecord implements PostEntity {
 
 // get post by title
 
-    static async getUserByTitle(title: string) {
-        const [results] = (await pool.execute("SELECT * FROM `users` WHERE `title` = :title", {
-                title,
+    static async getPostByTitle(title: string) {
+        const [results] = (await pool.execute("SELECT * FROM `posts` WHERE `title` = :title", {
+               title,
             }
         )) as PostRecordResults;
         return results.length === 0 ? null : new PostRecord(results[0]);
@@ -58,6 +58,8 @@ export class PostRecord implements PostEntity {
         }
     }
 
+    // get post by id if needed
+
     static async getPostById(id: string) {      // ok
         const [results] = (await pool.execute("SELECT * FROM `posts` WHERE `id` = :id", {
                 id,
@@ -66,8 +68,32 @@ export class PostRecord implements PostEntity {
         return results.length === 0 ? null : new PostRecord(results[0]);
     }
 
+    // edit/ update post
 
-    //update post
-    // async update(): Promise<void> {
-    // }
+    async updatePost(id: string) {
+        await pool.execute("UPDATE `posts` SET `title` = :title,  `desc` = :desc, `img` = :img, `date` = :date, `cat` = :cat WHERE  `id` = :id", {
+            id: this.id,
+            title: this.title,
+            desc: this.desc,
+            img: this.img,
+            date: this.date,
+            uid: this.uid,      // <== uid === user id from users db not sure if i reach post with post id or user id
+            cat: this.cat,
+        });
+    }
+
+    //list all posts
+
+    async getAllPosts() {
+        const [results] = await pool.execute("SELECT * FROM `posts`");
+        return results;
+    }
+
+    //delete post
+
+    async deletePost(id: PostRecord) {
+        await pool.execute("DELETE FROM `posts` WHERE `id` = :id", {
+            id: this.id,
+        })
+    }
 }
