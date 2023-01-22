@@ -34,7 +34,7 @@ export const WritePostPage = () => {
                     <input style={{display: "none"}} type="file"  id="file"/>
                     <label className="write_label" htmlFor="file">Upload image...</label>
                     <div className="buttons">
-                        <button>Save as draft</button>
+                        <button className="save_btn">Save as draft</button>
                         <button>Update</button>
                     </div>
                 </div>
