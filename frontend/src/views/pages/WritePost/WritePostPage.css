@@ -1,4 +1,5 @@
 .write_post {
+
     margin-top: 20px;
     display: flex;
     gap: 20px;
@@ -6,10 +7,16 @@
 
 .write_content {
     flex: 5;
+    height: 50vh;
+    width: 50vh;
+}
+
+.editor_container {
+
 }
 
 .write_menu {
-flex: 2;
+    flex: 2;
     display: flex;
     flex-direction: column;
     gap: 20px;
