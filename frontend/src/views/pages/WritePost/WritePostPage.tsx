@@ -16,7 +16,7 @@ export const WritePostPage = () => {
                 <input type="text" placeholder="Title"/>
 
                 <div className="editor_container">
-                    <ReactQuill theme="snow" value={value} onChange={setValue} />
+                    <ReactQuill className="editor" theme="snow" value={value} onChange={setValue} />
                 </div>
                 </div>
 
@@ -31,10 +31,44 @@ export const WritePostPage = () => {
                         <b>Visibility</b>
                     Public
                     </span>
-                    <input type="text" placeholder="Choose file..." id="file"/>
-                    <label htmlFor="file"></label>
+                    <input style={{display: "none"}} type="file"  id="file"/>
+                    <label className="write_label" htmlFor="file">Upload image...</label>
+                    <div className="buttons">
+                        <button>Save as draft</button>
+                        <button>Update</button>
+                    </div>
                 </div>
-                <div className="item">I2</div>
+                <div className="item">
+                    <h1>Category</h1>
+                    <div className="cat">
+                        <input type="radio" name="cat" value="art" id="art"/>
+                        <label className="write_label" htmlFor="art">Art</label>
+                    </div>
+
+                    <div className="cat">
+                    <input type="radio" name="cat" value="science" id="science"/>
+                    <label className="write_label" htmlFor="science">Science</label>
+                    </div>
+
+                    <div className="cat">
+                    <input type="radio" name="cat" value="technology" id="technology"/>
+                    <label className="write_label" htmlFor="technology">Technology</label>
+                    </div>
+
+                    <div className="cat">
+                    <input type="radio" name="cat" value="cinema" id="cinema"/>
+                    <label className="write_label" htmlFor="cinema">Cinema</label>
+                    </div>
+                    <div className="cat">
+
+                    <input type="radio" name="cat" value="design" id="design"/>
+                    <label className="write_label" htmlFor="design">Design</label>
+                    </div>
+                    <div className="cat">
+                    <input type="radio" name="cat" value="food" id="food"/>
+                    <label className="write_label" htmlFor="food">Food</label>
+                    </div>
+                </div>
             </div>
         </div>
 
