@@ -9,7 +9,6 @@ export const giftRouter = Router();
 giftRouter
   .get('/', async (req: Request, res: Response): Promise<void> => {
     const giftList = await GiftRecord.listAll();
-    // return pure data instead of views like in handebars.
     res.json({
       giftList,
     });

@@ -25,17 +25,7 @@ export class PostRecord implements PostEntity {
         this.id = obj.id;
         this.title = obj.title;
     }
-
-
-// get post by title
-
-    static async getPostByTitle(title: string) {
-        const [results] = (await pool.execute("SELECT * FROM `posts` WHERE `title` = :title", {
-               title,
-            }
-        )) as PostRecordResults;
-        return results.length === 0 ? null : new PostRecord(results[0]);
-    }
+    // ******  CRUD OPERATIONS *****
 
 // add - create post
 
@@ -58,7 +48,17 @@ export class PostRecord implements PostEntity {
         }
     }
 
-    // get post by id if needed
+    // get post by title
+
+    static async getPostByTitle(title: string) {
+        const [results] = (await pool.execute("SELECT * FROM `posts` WHERE `title` = :title", {
+                title,
+            }
+        )) as PostRecordResults;
+        return results.length === 0 ? null : new PostRecord(results[0]);
+    }
+
+    // get post by id
 
     static async getPostById(id: string) {      // ok
         const [results] = (await pool.execute("SELECT * FROM `posts` WHERE `id` = :id", {
@@ -68,9 +68,16 @@ export class PostRecord implements PostEntity {
         return results.length === 0 ? null : new PostRecord(results[0]);
     }
 
+    //list all posts
+
+    static async getAllPosts() {
+        const [results] = await pool.execute("SELECT * FROM `posts`");
+        return results;
+    }
+
     // edit/ update post
 
-    async updatePost(id: string) {
+    async updatePost() {
         await pool.execute("UPDATE `posts` SET `title` = :title,  `desc` = :desc, `img` = :img, `date` = :date, `cat` = :cat WHERE  `id` = :id", {
             id: this.id,
             title: this.title,
@@ -82,16 +89,11 @@ export class PostRecord implements PostEntity {
         });
     }
 
-    //list all posts
 
-    async getAllPosts() {
-        const [results] = await pool.execute("SELECT * FROM `posts`");
-        return results;
-    }
 
     //delete post
 
-    async deletePost(id: PostRecord) {
+    async deletePost(id: string) {
         await pool.execute("DELETE FROM `posts` WHERE `id` = :id", {
             id: this.id,
         })
